@@ -110,6 +110,47 @@ mean_and_sd = function(x) {
 
 mean_and_sd(y_vec)
 mean_and_sd(x_vec)
-
 ```
+
+## Different sample sizes, means, sds
+
+```{r CLT}
+sim_data = 
+  tibble(
+    x = rnorm(30, mean = 2, sd = 3)
+  )
+
+sim_data %>% 
+  summarize(
+    mean = mean(x),
+    sd = sd(x)
+  )
+```
+
+
+Let's write a fucntion that simulates data, computes the mean and sd.
+
+```{r}
+sim_mean_sd = function(n, mu = 4, sigma = 3){
+  # provide default values
+  # do checks on inputs 
+  
+      sim_data = 
+      tibble(
+        x = rnorm(n, mean = mu, sd = sigma)
+      )
+    
+    sim_data %>% 
+      summarize(
+        mean = mean(x),
+        sd = sd(x)
+      )
+  
+}
+
+sim_mean_sd(30,4,3) # r assumes its in order; position matching 
+sim_mean_sd(n = 30, sigma = 3, mu = 40)
+sim_mean_sd(30)
+```
+
 
